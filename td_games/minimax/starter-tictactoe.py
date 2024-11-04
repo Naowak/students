@@ -36,46 +36,43 @@ def getresult(b):
     else:
         return 0
     
-
-
-def explore(board):
-
-    # Check condition arret
-    if board.is_game_over():
-        result = getresult(board)
-        if result == 1:
-            # J'ai gagné
-            return 1, 0, 0
-        elif result == -1:
-            # j'ai perdu
-            return 0, 0, 1
-        else:
-            # égalité
-            return 0, 1, 0
+# def explore(board):
+#     # Check condition arret
+#     if board.is_game_over():
+#         result = getresult(board)
+#         if result == 1:
+#             # J'ai gagné
+#             return 1, 0, 0
+#         elif result == -1:
+#             # j'ai perdu
+#             return 0, 0, 1
+#         else:
+#             # égalité
+#             return 0, 1, 0
     
-    legal_moves = board.legal_moves()
-    results = [0, 0, 0]
-    for move in legal_moves:
-        # Pour chaque coup possible
-        board.push(move)
-        res = explore(board) # On descend d'un niveau dans l'arbre
-        for i in range(3): # On somme toutes les victoires, égalités et défaites que l'on obtiens sur l'ensemble des feuilles explorées
-            results[i] += res[i]
-        board.pop()
+#     legal_moves = board.legal_moves()
+#     results = [0, 0, 0]
+#     for move in legal_moves:
+#         # Pour chaque coup possible
+#         board.push(move)
+#         res = explore(board) # On descend d'un niveau dans l'arbre
+#         for i in range(3): # On somme toutes les victoires, égalités et défaites que l'on obtiens sur l'ensemble des feuilles explorées
+#             results[i] += res[i]
+#         board.pop()
     
-    return results
+#     return results
 
 
 
-board = Tictactoe.Board()
-begin = time.time()
-results = explore(board)
-end = time.time() - begin
-print('Victoire: ', results[0])
-print('Egalité: ', results[1])
-print('Défaite: ', results[2])
-print('Nombre de parties:', sum(results))
-print('Temps requis :', end)
+# board = Tictactoe.Board()
+# begin = time.time()
+# results = explore(board)
+# end = time.time() - begin
+# print('Victoire: ', results[0])
+# print('Egalité: ', results[1])
+# print('Défaite: ', results[2])
+# print('Nombre de parties:', sum(results))
+# print('Temps requis :', end)
     
 
 ### ------------------------------------
